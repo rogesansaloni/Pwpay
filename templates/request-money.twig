@@ -1,0 +1,30 @@
+{%  extends "generic.twig" %}
+
+{% block title %}Request Money{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('request-action') }}" method="POST" class="formulario">
+        <label for="TargetEmail">Request money from:</label>
+        {% if target_email_data is defined %}
+            <input type="text" value="{{ target_email_data }}" name="TargetEmail" id="TargetEmail" class="specialInputs"/>
+            {% if target_email_error is defined %}
+                <p class="error">{{ target_email_error }}</p>
+            {% endif %}
+        {% else %}
+            <input type="text" name="TargetEmail" id="TargetEmail" class="specialInputs"/>
+        {% endif %}
+
+        <label for="Amount">Amount:</label>
+        {% if amount_data is defined %}
+            <input type="number" value="{{ amount_data }}" name="Amount" id="Amount" class="specialInputs"/>
+            {% if amount_error is  defined %}
+                <p class="error">{{ amount_error }}</p>
+            {% endif %}
+        {% else %}
+            <input type="number" name="Amount" id="Amount" class="specialInputs"/>
+        {% endif %}
+
+
+        <input type="submit" value="Request Money" class="specialInputs">
+    </form>
+{% endblock %}

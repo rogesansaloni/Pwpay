@@ -1,0 +1,6 @@
+/vendor/
+/var/
+/public/uploads/*
+!/public/uploads/defaultProfile.png
+/public/.htaccess.txt
+.env

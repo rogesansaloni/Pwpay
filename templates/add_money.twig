@@ -1,0 +1,19 @@
+{%  extends "generic.twig" %}
+
+{% block title %}Add Funds{% endblock %}
+
+{% block main %}
+    <p>Iban: ******************************{{ iban_data }}</p>
+    <form action="{{ url_for('load-money') }}" method="POST" class="formulario">
+        <label for="Amount">Amount:</label>
+        {% if amount_data is defined %}
+            <input type="number" value="{{ amount_data }}" name="Amount" id="Amount" class="specialInputs"/>
+            {% if amount_error is defined %}
+                <p class="error">{{ amount_error }}</p>
+            {% endif %}
+        {% else %}
+            <input type="text" name="Amount" id="Amount" class="specialInputs"/>
+        {% endif %}
+        <input type="submit" value="Add funds" class="specialInputs">
+    </form>
+{% endblock %}

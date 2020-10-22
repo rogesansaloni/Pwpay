@@ -1,0 +1,39 @@
+{%  extends "generic.twig" %}
+
+{% block title %}Pending requests{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ full_url_for('home') }}assets/css/pending.css"/>
+{% endblock %}
+
+    {% block main %}
+        {% if warning is not empty %}
+            <p class="warning">{{ warning }}</p>
+        {% endif %}
+
+        <div class = "pendingPage">
+            <p class="error">{{ data }}</p>
+            <table class="list">
+                <tr>
+                    <th class="primeraFila">List of pending transactions</th>
+                </tr>
+                <tr>
+                    <td>
+                        <table class = "tablaRequest">
+                            {% set i=0 %}
+                            {% for request in info['requestsText'] %}
+                                <tr>
+                                    <td class="casillaNumero">{{ i+1 }}</td>
+                                    <td class="casillaRequest">{{ request }}</td>
+                                    <td class="casillaPagar"><a href="{{ full_url_for('request-money') }}/{{ info['requestsId'][i] }}/accept">Pagar a este usuario</a></td>
+                                    {% set i=i+1 %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endblock %}
+

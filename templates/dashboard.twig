@@ -1,0 +1,61 @@
+{%  extends "generic.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ full_url_for('home') }}assets/css/dashboard.css"/>
+{% endblock %}
+
+    {% block main %}
+        {% if warning is not empty %}
+            <p class="warning">{{ warning }}</p>
+        {% endif %}
+
+        <div class = "dashboardPage">
+            <div class = "tableBalance">
+                <table class="dashboard">
+                    <tr>
+                        <td class="imagenes"><img class ="imagenMoney" src="{{ full_url_for('home') }}assets/media/money.png"></td>
+                    </tr>
+                    <tr>
+                        <td class="primeraFila">Current balance</td>
+                    </tr>
+                    <tr>
+                        <td class="infoTabla">{{ balance }}€</td>
+                    </tr>
+                </table>
+            </div>
+            <div class = "tableTransactions">
+                <table class="dashboard">
+                    <tr>
+                        <th class="imagenes"><img class ="imagenTransaction" src="{{ full_url_for('home') }}assets/media/transaction.png"></th>
+                    </tr>
+                    <tr>
+                        <td class="primeraFila">Latest 5 transactions</td>
+                    </tr>
+                    <tr>
+                        <td class="infoTabla">
+                            <table class = "dashboard">
+                                {% set i=1 %}
+                                {% for transaction in transactions %}
+                                    <tr>
+                                        <td class="casillaNumero">{{ i }}</td>
+                                        <td class="infoTransaction">{{ transaction }}</td>
+                                        {% set i=i+1 %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="infoTabla">
+                            <a href="{{ url_for('send-money') }}"><button class="boton">Send money</button></a>
+                            <a href="{{ url_for('request-money') }}"><button class="boton">Request money</button></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    {% endblock %}
+

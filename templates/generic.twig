@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ full_url_for('home') }}assets/css/styles.css"/>
+    {% endblock %}
+</head>
+<body>
+
+    <header>
+        <a href="{{ url_for('home') }}"><img id = "logo" src="{{ full_url_for('home') }}assets/media/logo.png" width="230" height="60" alt="logo"></a>
+
+        {% block loginButtons %}
+            {% if islogged %}
+                <div class="botones">
+
+                    <a href="{{ url_for('profile') }}"><img id = "photo" src="{{ full_url_for('home') }}.{{ path_to_photo }}" width="50" height="50" alt="photo"></a>
+                    <form action="{{ url_for('logout-action') }}" method="POST">
+                        <input type="image" name="submit" src="{{ full_url_for('home') }}assets/media/cerrarSesion.png" alt="Submit" width="150" height="50"/>
+                    </form>
+                </div>
+            {% else %}
+                <div>
+                    <a href="{{ url_for('signup-form') }}"><img id = "registrarse" src="{{ full_url_for('home') }}assets/media/registrarse.png" width="150" height="50" alt="registrarse"></a>
+                    <a href="{{ url_for('signin-form') }}"><img id = "iniciarSesion" src="{{ full_url_for('home') }}assets/media/iniciarSesion.png" width="150" height="50" alt="iniciarSesion"></a>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+
+    </header>
+
+    <main>
+        {% if islogged %}
+        <div class="menu">
+            <a href="{{ url_for('dashboard') }}"><button>DASHBOARD</button></a>
+            <a href="{{ url_for('iban-form') }}"><button>LOAD MONEY</button></a>
+            <a href="{{ url_for('send-money') }}"><button>SEND MONEY</button></a>
+            <a href="{{ url_for('request-money') }}"><button>REQUEST MONEY</button></a>
+            <a href="{{ url_for('transactions') }}"><button>TRANSACTIONS</button></a>
+
+        </div>
+        {% endif %}
+        {% block main %}
+
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% block footer %}
+            <h>All rights reserved</h>
+            <h>Created by Bernardo Nouel, Sandra Cea & Rogelio Sansaloni</h>
+            <h>2020</h>
+            <h>Spain</h>
+        {% endblock %}
+    </footer>
+
+</body>
+</html>

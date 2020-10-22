@@ -1,0 +1,53 @@
+{%  extends "generic.twig" %}
+
+{% block title %}Profile page{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ full_url_for('home') }}assets/css/landing.css"/>
+{% endblock %}
+
+    {% block main %}
+
+        <form action="{{ url_for('profile_change') }}" method="POST" enctype="multipart/form-data" class="formulario">
+            <label for="email">Email:</label>
+
+            <input type="email" value="{{ email }}" name="email" id="email" class="specialInputs" readonly/>
+
+
+            <label for="birthday">Birthday:</label>
+
+            <input type="string" value="{{ birthday }}" name="birthday" id="birthday" class="specialInputs" readonly/>
+
+            <label for="cellphone">Cellphone:</label>
+            {% if data.cellphone_data is defined %}
+                <input type="text" value="{{ data.cellphone_data }}" name="cellphone" id="cellphone" class="specialInputs"/>
+                {% if data.cellphone_error is defined %}
+                    <p class="error">{{ data.cellphone_error }}</p>
+                {% endif %}
+            {% else %}
+                <input type="text" name="cellphone" value="{{ cellphone }}" id="cellphone" class="specialInputs"/>
+            {% endif %}
+
+            <label for="profile_photo">Profile Image:</label>
+
+            <img id = "profile_picture" src="{{ full_url_for('home') }}.{{ path_to_photo }}" width="150" height="150" alt="registrarse">
+            {% if data.photoToUpload_error is defined %}
+                <p class="error">{{ data.photoToUpload_error }}</p>
+            {% endif %}
+
+
+            <input type="file" name="photoToUpload" id="fileToUpload" >
+
+            <input type="submit" value="Change Profile" class="specialInputs">
+
+        </form>
+
+        <div>
+            <hr/>
+        </div>
+
+        <a href="{{ url_for('password_change_page') }}"><input type="submit" value="Change Password" class="specialInputs"></a>
+
+    {% endblock %}
+

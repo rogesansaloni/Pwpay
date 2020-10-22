@@ -1,0 +1,126 @@
+body {
+    background-color: lightcyan;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 70px auto 70px;
+}
+
+header {
+    background-color: lightcyan;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content:flex-end;
+    align-items:center;
+    margin-top:20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content:center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+footer {
+    background-color: lightgray;
+    opacity: 0.75;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content:flex-end;
+    align-items:center;
+}
+
+hr {
+    width: 100%;
+}
+.botones {
+    display:flex;
+    flex-direction: row;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: flex-start;
+}
+
+
+.specialInputs {
+    width: 100%;
+    padding: 12px 50px;
+    margin: 12px 0;
+    box-sizing: border-box;
+}
+
+.menu {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content:flex-end;
+    align-items:center;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+button {
+    background-color: lightgray; /* Green */
+    border: none;
+    color: #383d39;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 16px;
+
+}
+
+.tableTransactions {
+    border: 1px solid black;
+    width: 100%;
+    height: auto;
+    justify-content: space-around;
+    font-size: 1.5em;
+    margin-top: 30px;
+}
+
+.tableTransactions .primeraFila {
+    background-color:lightgray;
+    text-align: center;
+    display: table-row;
+    border-collapse: collapse;
+
+}
+
+.tableTransactions .primeraFila .numero{
+    width: 10%;
+}
+
+.tableTransactions .Row {
+    text-align: center;
+    display: table-row;
+}
+
+.tableTransactions .Row .numero{
+    width: 10%;
+}
+
+.Crecimiento {
+    color: limegreen;
+}
+
+.Decrecimiento {
+    color: red;
+}
+
+.Request {
+    color: gold;
+}

@@ -1,0 +1,30 @@
+{%  extends "generic.twig" %}
+
+{% block title %}Add Iban{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('iban-action') }}" method="POST" class="formulario">
+        <label for="IBANOwner">IBAN Owner:</label>
+        {% if iban_o_data is defined %}
+            <input type="text" value="{{ iban_o_data }}" name="IBANOwner" id="IBANOwner" class="specialInputs"/>
+            {% if iban_o_error is defined %}
+                <p class="error">{{ iban_o_error }}</p>
+            {% endif %}
+        {% else %}
+            <input type="text" name="IBANOwner" id="IBANOwner" class="specialInputs"/>
+        {% endif %}
+
+        <label for="IBAN">IBAN:</label>
+        {% if iban_data is defined %}
+            <input type="text" value="{{ iban_data }}" name="IBAN" id="IBAN" class="specialInputs"/>
+            {% if iban_error is  defined %}
+                <p class="error">{{ iban_error }}</p>
+            {% endif %}
+        {% else %}
+            <input type="text" name="IBAN" id="IBAN" class="specialInputs"/>
+        {% endif %}
+
+
+        <input type="submit" value="Add IBAN" class="specialInputs">
+    </form>
+{% endblock %}

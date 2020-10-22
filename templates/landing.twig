@@ -1,0 +1,23 @@
+{%  extends "generic.twig" %}
+
+{% block title %}Landing page{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ full_url_for('home') }}assets/css/landing.css"/>
+{% endblock %}
+
+    {% block main %}
+        {% if warning is not empty %}
+        <p class="warning">{{ warning }}</p>
+        {% endif %}
+
+        <img id ="worldMap" src="{{ full_url_for('home') }}assets/media/worldmap.png" width="1400" height="1000" alt="wordlMap">
+
+        <hr/>
+
+
+        <img src="{{ full_url_for('home') }}assets/media/HowItWorks.png" width="1800" height="600" alt="HowItWorks" id="howItWorks">
+
+    {% endblock %}
+

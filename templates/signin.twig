@@ -1,0 +1,28 @@
+{% extends "generic.twig" %}
+{% block title %} SignIn {% endblock %}
+{% block main %}
+    <form action="{{ url_for('signin-action') }}" method="POST" class="formulario">
+        <label for="email">Email:</label>
+        {% if email_data is defined %}
+            <input type="email" value="{{ email_data }}" name="email" id="email" class="specialInputs"/>
+            {% if email_error is defined %}
+                <p class="error">{{ email_error }}</p>
+            {% endif %}
+        {% else %}
+            <input type="email" name="email" id="email" class="specialInputs"/>
+        {% endif %}
+
+        <label for="password">Password:</label>
+        {% if password_data is defined %}
+            <input type="password" value="{{ password_data }}" name="password" id="password" class="specialInputs"/>
+            {% if password_error is  defined %}
+                <p class="error">{{ password_error }}</p>
+            {% endif %}
+        {% else %}
+            <input type="password" name="password" id="password" class="specialInputs"/>
+        {% endif %}
+
+
+        <input type="submit" value="Sign in" class="specialInputs">
+    </form>
+{% endblock %}
